@@ -1,116 +1,75 @@
-console.log("colorgame");
+console.log("Beginning");
 
-const dropdownRemove = function () {
-  const dropdownRemoval = document.getElementById("dropdown-content");
-  dropdownRemoval.addEventListener("click", function () {
-    dropdownRemoval.classList.remove("remove"); //verwijdert de class remove waardoor de css hover niet meer geldig is en het menu weer naar rechts schuift
-    setTimeout(() => {
-      dropdownRemoval.classList.add("remove"); 
-    }, 300);// plaats aan het einde van de transition de class remove weer terug waardoor de hover weer werkt
+// Dom Manipulation
+const addMoviesToDom = (filteredMovies) => {
+  const list = document.getElementById("filmList");
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
+  let filteredPosters = filteredMovies.map((A) => A.Poster);
+  let filteredImdbIds = filteredMovies.map((movieTitle) => movieTitle.imdbID);
+  filteredMovies.forEach((y) => {
+    const listItem = document.createElement("li");
+    const aTag = document.createElement("a");
+    const listImg = document.createElement("IMG");
+    listItem.className = "listItem";
+    aTag.className = "imdblink";
+    aTag.id = "imdblink" + y.imdbID;
+    aTag.href = "https://www.imdb.com/title/" + y.imdbID;
+    aTag.target = "_blank";
+    listImg.src = y.Poster;
+    aTag.appendChild(listImg);
+    listItem.appendChild(aTag);
+    list.appendChild(listItem);
   });
 };
 
-//coloring
-//white
+addMoviesToDom(movies);
 
-const addWhite = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "white-background";
-};
+// Filters
+function filterMovies(wordInMovieTitle) {
+  let filteredMovies = movies.filter((movie) =>
+    movie.Title.includes(wordInMovieTitle)
+  );
+  addMoviesToDom(filteredMovies);
+}
 
-const attachWhite = function () {
-  const makeWhite = document.getElementById("white");
-  makeWhite.addEventListener("click", function () {
-    addWhite();
+function filterLatestMovies() {
+  let latestMovies = movies.filter((releaseYear) => releaseYear.Year >= 2014);
+  addMoviesToDom(latestMovies);
+}
+
+//Event handlers
+const buttonAction = () => {
+  const buttons = document.querySelectorAll(".radio-button");
+  buttons.forEach(function (buttons) {
+    buttons.addEventListener("change", handleOnChangeEvent);
   });
 };
 
-//red
-
-const addRed = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "red-background";
+const handleOnChangeEvent = (event) => {
+  const movieSelected = event.target;
+  switch (event.target.value) {
+    case "newest":
+      filterLatestMovies(2014);
+      break;
+    case "avengers":
+      filterMovies("Avengers");
+      break;
+    case "x-men":
+      filterMovies("X-Men");
+      break;
+    case "batman":
+      filterMovies("Batman");
+      break;
+    case "princess":
+      filterMovies("Princess");
+      break;
+    case "all":
+      addMoviesToDom(movies);
+      break;
+  }
 };
 
-const attachRed = function () {
-  const makeRed = document.getElementById("red");
-  makeRed.addEventListener("click", function () {
-    addRed();
-  });
-};
-
-//orange
-const addOrange = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "orange-background";
-};
-
-const attachOrange = function () {
-  const makeOrange = document.getElementById("orange");
-  makeOrange.addEventListener("click", function () {
-    addOrange();
-  });
-};
-
-//yellow
-const addYellow = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "yellow-background";
-};
-
-const attachYellow = function () {
-  const makeYellow = document.getElementById("yellow");
-  makeYellow.addEventListener("click", function () {
-    addYellow();
-  });
-};
-
-//green
-const addGreen = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "green-background";
-};
-
-const attachGreen = function () {
-  const makeGreen = document.getElementById("green");
-  makeGreen.addEventListener("click", function () {
-    addGreen();
-  });
-};
-
-//blue
-const addBlue = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "blue-background";
-};
-
-const attachBlue = function () {
-  const makeBlue = document.getElementById("blue");
-  makeBlue.addEventListener("click", function () {
-    addBlue();
-  });
-};
-
-//purple
-const addPurple = function () {
-  const bodyElement = document.body;
-  bodyElement.classList = "purple-background";
-};
-
-const attachPurple = function () {
-  const makePurple = document.getElementById("purple");
-  makePurple.addEventListener("click", function () {
-    addPurple();
-  });
-};
-
-// function calls
-
-dropdownRemove();
-attachWhite();
-attachRed();
-attachOrange();
-attachYellow();
-attachGreen();
-attachBlue();
-attachPurple();
+buttonAction();
+console.log("The End");

@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kies een kleur! eindopdracht color toggle</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Zoek een film uit! Eindopdracht filmzoeker</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <script defer src="database.js"></script>
     <script defer src="index.js"></script>
   </head>
 
-  <body class="white-background" id="bodyElement">
-    <header>
-      <div class="navbar">
-        <div class="dropdown" id="dropdown">
-          <img
-            class="hamburger"
-            src="hamburger_icon.svg.png"
-            width="40px"
-            alt="menu"
-          />
-          <ul class="dropdown-content remove" id="dropdown-content">
-            <h2 class="Welkom">Kies een kleur!</h2>
-            <li class="btn white-background" id="white">Wit</li>
-            <li class="btn red-background" id="red">Rood</li>
-            <li class="btn orange-background" id="orange">Oranje</li>
-            <li class="btn yellow-background" id="yellow">Geel</li>
-            <li class="btn green-background" id="green">Groen</li>
-            <li class="btn blue-background" id="blue">Blauw</li>
-            <li class="btn purple-background" id="purple">Paars</li>
-          </ul>
-        </div>
+  <body>
+    <h2>Zoek je favoriete film!</h2>
+    <nav>
+      <div class="navButton">
+        <input class="radio-button" type="radio" id="newest-btn" name="movie-filter-btn" Value="newest"></input>
+        <label for="newest-btn">Nieuwste</label>
       </div>
-    </header>
+      <div class="navButton"> 
+        <input class="radio-button" type="radio" id="avengers-btn" name="movie-filter-btn" Value="avengers"></input>
+        <label for="avengers-btn">Avengers</label>
+      </div>
+      <div class="navButton"> 
+        <input class="radio-button" type="radio" id="xmen-btn" name="movie-filter-btn" Value="x-men"></input>
+        <label for="x-men-btn">X-Men</label>
+      </div>
+      <div class="navButton"> 
+        <input class="radio-button" type="radio" id="princess-btn" name="movie-filter-btn" Value="princess"></input>
+        <label for="princess-btn">Princess</label>
+      </div>
+      <div class="navButton"> 
+        <input class="radio-button" type="radio" id="batman-btn" name="movie-filter-btn" Value="batman"></input>
+        <label for="batman-btn">Batman</label>
+      </div>
+      <div class="navButton"> 
+        <input class="radio-button" type="radio" id="all-btn" name="movie-filter-btn" Value="all"></input>
+        <label for="all-btn" checked>Alles</label>
+      </div>
+    </nav>
     <main>
-      <article class="articleHeader">
-        <h2>
-          <iframe
-            src="https://giphy.com/embed/IB9foBA4PVkKA"
-            width="20"
-            height="20"
-            frameborder="0"
-            class="giphy-embed"
-          ></iframe>
-          Kies een kleur!
-          <iframe
-            src="https://giphy.com/embed/IB9foBA4PVkKA"
-            width="20"
-            height="20"
-            frameborder="0"
-            class="giphy-embed"
-          ></iframe>
-        </h2>
-      </article>
+      <div class="container">
+        <ul class="filmlist" id= "filmList">
+        </ul>
+      </div>
     </main>
   </body>
 </html>

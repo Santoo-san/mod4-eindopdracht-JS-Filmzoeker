@@ -1,0 +1,53 @@
+body {
+  background: #4e9cb6;
+}
+
+h2 {
+  margin-top: 50px;
+  text-align: center;
+}
+
+p,
+label {
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+nav {
+  margin: 2rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navButton {
+  margin: 1rem;
+  border: 1px black solid;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: #0099ff;
+  padding: 1rem;
+}
+
+.filmlist {
+  list-style-type: none;
+  padding-left: 10px;
+  margin: 10px 0;
+}
+
+.listItem {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 10px;
+}
+
+img {
+  border: 1px black solid;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*# sourceMappingURL=styles.css.map */
